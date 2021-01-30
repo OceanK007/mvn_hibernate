@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+	<session-factory>
+		
+		<!-- Hibernate properties will be loaded from properties file in DatabaseDao.java file -->
+			
+		<!-- Use this if we are using xml mapping i.e entityName.hbm.xml file(s) -->
+		<!-- <mapping resource="hibernate.hbm.xml" /> -->			
+		
+		<!-- Annotations @Entity, @Table, etc. will be used for mapping here -->
+		<mapping class="com.ocean.oto.uni.foreign.Person"/>
+		<mapping class="com.ocean.oto.uni.foreign.Address"/>
+		<mapping class="com.ocean.oto.bi.foreign.Person"/>
+		<mapping class="com.ocean.oto.bi.foreign.Address"/>
+		<mapping class="com.ocean.oto.bi.primary.Person"/>
+		<mapping class="com.ocean.oto.bi.primary.Address"/>
+		<mapping class="com.ocean.otm.uni.foreign.Person"/>
+		<mapping class="com.ocean.otm.uni.foreign.Address"/>
+		<mapping class="com.ocean.otm.bi.foreign.Person"/>
+		<mapping class="com.ocean.otm.bi.foreign.Address"/>
+		<mapping class="com.ocean.mto.uni.foreign.Person"/>
+		<mapping class="com.ocean.mto.uni.foreign.Address"/>
+		<mapping class="com.ocean.mto.bi.foreign.Person"/>
+		<mapping class="com.ocean.mto.bi.foreign.Address"/>
+		<mapping class="com.ocean.mtm.uni.foreign.Person"/>
+		<mapping class="com.ocean.mtm.uni.foreign.Address"/>
+		<mapping class="com.ocean.mtm.bi.foreign.Person"/>
+		<mapping class="com.ocean.mtm.bi.foreign.Address"/>
+	</session-factory>
+</hibernate-configuration>
