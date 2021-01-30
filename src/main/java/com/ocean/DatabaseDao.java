@@ -1,5 +1,7 @@
 package com.ocean;
 
+import java.util.Properties;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -11,11 +13,22 @@ public class DatabaseDao
 {
 	public static void main(String[] args)
 	{
+		Properties properties = new Properties();
+		try
+		{
+			properties.load(DatabaseDao.class.getClassLoader().getResourceAsStream("db.properties"));
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+		
+		System.out.println("Properties: "+properties);
 		// Create configuration instance
 		Configuration configuration = new Configuration();
 
 		// Pass hibernate configuration file
-		configuration.configure("hibernate.cfg.xml");
+		configuration.configure("hibernate.cfg.xml").mergeProperties(properties);// or use .addProperties(properties)
 
 		// Since version 4.x, service registry is being used
 		ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties()).build(); 
@@ -27,7 +40,8 @@ public class DatabaseDao
 		SessionFactory sessionFactory = configuration.buildSessionFactory(serviceRegistry);
 		
 		// Open session
-		Session session = sessionFactory.openSession();		
+		Session session = sessionFactory.openSession();
+		
 		Transaction transaction = session.beginTransaction();
 		
 		Student student = new Student();
@@ -40,6 +54,5 @@ public class DatabaseDao
 		session.close();
 		
 		System.out.println("Data successfully saved");
-
 	}
 }

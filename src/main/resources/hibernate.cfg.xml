@@ -3,17 +3,13 @@
 
 <hibernate-configuration>
 	<session-factory>
-		<!-- Tables will be automatically created if not created -->
-		<property name="hbm2ddl.auto">update</property>		
-		<property name="dialect">org.hibernate.dialect.MySQLDialect</property>
-		<property name="connection.url">jdbc:mysql://localhost:3306/hibernate_demo</property>
-		<property name="show_sql">true</property>
-		<property name="format_sql">false</property>
-		<property name="use_sql_comments">true</property>
-		<property name="connection.username">root</property>
-		<property name="connection.password">root</property>
-		<property name="connection.driver_class">com.mysql.jdbc.Driver</property>
 		
-		<mapping resource="student.hbm.xml"/>
+		<!-- Hibernate properties will be loaded from properties file in DatabaseDao.java file -->
+			
+		<!-- Use this if we are using xml mapping i.e entityName.hbm.xml file(s) -->
+		<!-- <mapping resource="hibernate.hbm.xml" /> -->			
+		
+		<!-- Annotations @Entity, @Table, etc. will be used for mapping here -->
+		<mapping class="com.ocean.Student"/>
 	</session-factory>
 </hibernate-configuration>
