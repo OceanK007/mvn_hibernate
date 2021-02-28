@@ -24,9 +24,9 @@
 		<mapping class="com.ocean.mto.uni.foreign.Address"/>
 		<mapping class="com.ocean.mto.bi.foreign.Person"/>
 		<mapping class="com.ocean.mto.bi.foreign.Address"/>
-		<mapping class="com.ocean.mtm.uni.foreign.Person"/>
-		<mapping class="com.ocean.mtm.uni.foreign.Address"/>
-		<mapping class="com.ocean.mtm.bi.foreign.Person"/>
-		<mapping class="com.ocean.mtm.bi.foreign.Address"/>
+		<mapping class="com.ocean.mtm.uni.jointable.Person"/>
+		<mapping class="com.ocean.mtm.uni.jointable.Address"/>
+		<mapping class="com.ocean.mtm.bi.jointable.Person"/>
+		<mapping class="com.ocean.mtm.bi.jointable.Address"/>
 	</session-factory>
 </hibernate-configuration>

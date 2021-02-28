@@ -1,4 +1,4 @@
-package com.ocean.mtm.bi.foreign;
+package com.ocean.mtm.bi.jointable;
 
 import java.io.Serializable;
 import java.util.List;
@@ -15,8 +15,8 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
-@Entity(name = "mtm_bi_foreign_person") // Providing name so, it won't throw DuplicationMappingexception
-@Table(name="mtm_bi_foreign_person")
+@Entity(name = "mtm_bi_jointable_person") // Providing name so, it won't throw DuplicationMappingexception
+@Table(name="mtm_bi_jointable_person")
 public class Person implements Serializable
 {
 	private static final long serialVersionUID = 7355712628370235477L;
@@ -32,11 +32,11 @@ public class Person implements Serializable
 	// This is the owner table since it has @JoinColumn. we can get person info as well as address
 	@ManyToMany(fetch=FetchType.LAZY, cascade=CascadeType.ALL)	// Default FetchType is LAZY
 	//@JoinColumn(name="address_id")				// it's useless even you define it, no column will be created	
-	@JoinTable(name="mtm_uni_foreign_person_address", joinColumns=@JoinColumn(name="person_id"), inverseJoinColumns=@JoinColumn(name="address_id"))
+	@JoinTable(name="mtm_bi_jointable_person_address", joinColumns=@JoinColumn(name="person_id"), inverseJoinColumns=@JoinColumn(name="address_id"))
 	private List<Address> addresses;
-	// Default name for name attribute = mtm_uni_foreign_person_mtm_uni_foreign_address (ownerTableName_nonOwnerTableName)
-	// Default name for joinColumns attribute = mtm_uni_foreign_person_id (ownerTableName_primaryKeyNameOfOwnerTable)
-	// Default name for inverseJoinColumns attribute = mtm_uni_foreign_address_id (propertyName_primaryKeyNameOfNonOwnerTable)
+	// Default name for name attribute = mtm_uni_jointable_person_mtm_uni_foreign_address (ownerTableName_nonOwnerTableName)
+	// Default name for joinColumns attribute = mtm_uni_jointable_person_id (ownerTableName_primaryKeyNameOfOwnerTable)
+	// Default name for inverseJoinColumns attribute = mtm_uni_jointable_address_id (propertyName_primaryKeyNameOfNonOwnerTable)
 	
 	@Column(name = "name")
 	private String name;

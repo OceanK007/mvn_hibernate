@@ -1,4 +1,4 @@
-package com.ocean.mtm.bi.foreign;
+package com.ocean.mtm.uni.jointable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -106,7 +106,7 @@ public class DatabaseDao
 			idList.add(2L);
 			Session session3 = sessionFactory.openSession();
 			System.out.println("------------------------------ Retrieving data using HQL to fetch another object");
-			Query query = session3.createQuery("SELECT DISTINCT(p) FROM com.ocean.mtm.bi.foreign.Person p INNER JOIN FETCH p.addresses WHERE p.id IN (:ids)");
+			Query query = session3.createQuery("SELECT DISTINCT(p) FROM com.ocean.mtm.uni.jointable.Person p INNER JOIN FETCH p.addresses WHERE p.id IN (:ids)");
 			// If you don't use DISTINCT(p) then 4 person objects will be retrieved. Since there are 2 addresses for each person. But since you 
 			// are using hibernate bi-directional mappings, you don't need 2 records per person. Use getAddresses() to get all addresses related to each person 
 			query.setParameterList("ids", idList);
